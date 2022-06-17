@@ -53,8 +53,16 @@ const updateStatusBook = (id, status) => {
     const targetIndex = findBookIndex(id);
     books[targetIndex].isFinished = status;
 
-    saveBook();
     document.dispatchEvent(new Event(RENDER_EVENT));
+    saveBook();
+}
+
+const removeBook = (id) => {
+    const targetIndex = findBookIndex(id);
+    books.splice(targetIndex, 1);
+
+    document.dispatchEvent(new Event(RENDER_EVENT));
+    saveBook();
 }
 
 const loadBooksFromStorage = () => {
