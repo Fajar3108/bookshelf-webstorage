@@ -1,8 +1,10 @@
 import { RENDER_EVENT, SAVED_EVENT } from "./env.js";
 import { generateAlertElement } from "./helpers/helper.js";
-import { addBook, getBooks, loadBooksFromStorage, renderBooks } from "./services/book.js";
+import { addBook, filterBook, getBooks, loadBooksFromStorage, renderBooks } from "./services/book.js";
 
 const bookForm = document.querySelector('#bookForm');
+
+const searchInput = document.querySelector('#searchInput');
 
 // tabs
 const finishedTabBtn = document.querySelector('#finishedTabBtn');
@@ -33,21 +35,31 @@ document.addEventListener(SAVED_EVENT, () => {
 });
 
 document.addEventListener(RENDER_EVENT, () => {
-    const booksToRender = getBooks(finishedTabBtn.classList.contains('active'));
+    const status = finishedTabBtn.classList.contains('active');
+    let booksToRender = getBooks(status);
+    
+    if (searchInput.value) booksToRender = filterBook(searchInput.value, status);
+
     renderBooks(booksToRender, booksWrapper);
 });
 
 unfinishedTabBtn.addEventListener('click', () => {
+    searchInput.value = '';
     finishedTabBtn.classList.remove('active');
     unfinishedTabBtn.classList.add('active');
     document.dispatchEvent(new Event(RENDER_EVENT));
 });
 
 finishedTabBtn.addEventListener('click', () => {
+    searchInput.value = '';
     unfinishedTabBtn.classList.remove('active');
     finishedTabBtn.classList.add('active');
     document.dispatchEvent(new Event(RENDER_EVENT));
 });
+
+searchInput.addEventListener('keyup', () => {
+    document.dispatchEvent(new Event(RENDER_EVENT));
+})
 
 document.addEventListener('DOMContentLoaded', () => {
     loadBooksFromStorage();

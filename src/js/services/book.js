@@ -65,6 +65,13 @@ const removeBook = (id) => {
     saveBook();
 }
 
+const filterBook = (keyword, status) => {
+    const booksByStatus = getBooks(status);
+    const booksFiltered = booksByStatus.filter((book) => book.title.includes(keyword) || book.author.includes(keyword));
+
+    return booksFiltered;
+}
+
 const loadBooksFromStorage = () => {
     const serializedData = localStorage.getItem(STORAGE_KEY);
     const data = JSON.parse(serializedData);
@@ -138,5 +145,5 @@ const renderBooks = (books, wrapper) => {
 }
 
 export {
-    addBook, getBooks, renderBooks, loadBooksFromStorage
+    addBook, getBooks, renderBooks, loadBooksFromStorage, filterBook
 }

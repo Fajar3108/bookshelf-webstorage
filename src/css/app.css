@@ -158,6 +158,19 @@ main {
   color: #fff;
 }
 
+.book__filter {
+  margin-top: 10px;
+}
+
+.book__filter input {
+  width: 100%;
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid #aaa;
+  border-radius: 5px;
+  outline: none;
+}
+
 @media (max-width: 1023px) {
   .book_form {
     width: 40%;
