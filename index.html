@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bookshelf App</title>
+    <link rel="stylesheet" href="./src/css/app.css" />
+  </head>
+  <body>
+    <main>
+      <form class="book_form" id="bookForm">
+        <h3 id="bookFormTitle">Add New Book</h3>
+        <input type="text" id="title" placeholder="Title" />
+        <input type="text" id="author" placeholder="Author" />
+        <input type="number" id="year" placeholder="Year" />
+        <label>
+          <input type="checkbox" id="isCompleted" />
+          Finished reading?
+        </label>
+        <button>Submit</button>
+      </form>
+
+      <div class="bookshelf">
+        <div class="bookshelf__tab">
+          <button class="active" id="finishedTabBtn">Finished</button>
+          <button id="unfinishedTabBtn">Unfinished</button>
+        </div>
+        <div class="books">
+          <div class="book__card">
+            <h4 class="book__title">Book Title</h4>
+            <table class="book__info">
+              <tr>
+                <td width="100px">Author</td>
+                <td>Author Name</td>
+              </tr>
+              <tr>
+                <td width="100px">Year</td>
+                <td>2020</td>
+              </tr>
+            </table>
+            <div class="book__buttons">
+              <button id="finishBookBtn">Finish</button>
+              <button id="editBookBtn">Edit</button>
+              <button id="deleteBookBtn">Delete</button>
+            </div>
+          </div>
+          <div class="book__card">
+            <h4 class="book__title">Book Title</h4>
+            <table class="book__info">
+              <tr>
+                <td width="100px">Author</td>
+                <td>Author Name</td>
+              </tr>
+              <tr>
+                <td width="100px">Year</td>
+                <td>2020</td>
+              </tr>
+            </table>
+            <div class="book__buttons">
+              <button id="finishBookBtn">Finish</button>
+              <button id="editBookBtn">Edit</button>
+              <button id="deleteBookBtn">Delete</button>
+            </div>
+          </div>
+          <div class="book__card">
+            <h4 class="book__title">Book Title</h4>
+            <table class="book__info">
+              <tr>
+                <td width="100px">Author</td>
+                <td>Author Name</td>
+              </tr>
+              <tr>
+                <td width="100px">Year</td>
+                <td>2020</td>
+              </tr>
+            </table>
+            <div class="book__buttons">
+              <button id="finishBookBtn">Finish</button>
+              <button id="editBookBtn">Edit</button>
+              <button id="deleteBookBtn">Delete</button>
+            </div>
+          </div>
+          <div class="book__card">
+            <h4 class="book__title">Book Title</h4>
+            <table class="book__info">
+              <tr>
+                <td width="100px">Author</td>
+                <td>Author Name</td>
+              </tr>
+              <tr>
+                <td width="100px">Year</td>
+                <td>2020</td>
+              </tr>
+            </table>
+            <div class="book__buttons">
+              <button id="finishBookBtn">Finish</button>
+              <button id="editBookBtn">Edit</button>
+              <button id="deleteBookBtn">Delete</button>
+            </div>
+          </div>
+          <div class="book__card">
+            <h4 class="book__title">Book Title</h4>
+            <table class="book__info">
+              <tr>
+                <td width="100px">Author</td>
+                <td>Author Name</td>
+              </tr>
+              <tr>
+                <td width="100px">Year</td>
+                <td>2020</td>
+              </tr>
+            </table>
+            <div class="book__buttons">
+              <button id="finishBookBtn">Finish</button>
+              <button id="editBookBtn">Edit</button>
+              <button id="deleteBookBtn">Delete</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script src="./src/js/app.js"></script>
+  </body>
+</html>

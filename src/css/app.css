@@ -1,0 +1,161 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+button {
+  cursor: pointer;
+}
+
+body {
+  background-color: #ffffff;
+  font-family: Arial;
+}
+
+main {
+  width: 90%;
+  max-width: 1024px;
+  margin: 0 auto;
+  padding: 20px 0;
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+/* Book Form */
+.book_form {
+  width: 30%;
+  display: block;
+}
+
+.book_form h3 {
+  margin-bottom: 10px;
+  font-weight: 300;
+}
+
+.book_form input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #aaa;
+  border-radius: 5px;
+  outline: none;
+}
+
+.book_form input[type="checkbox"] {
+  width: auto;
+}
+
+.book_form label {
+  display: block;
+}
+
+.book_form button {
+  width: 100%;
+  margin-top: 10px;
+  padding: 12px 0;
+  color: #ffffff;
+  background-color: #3eb489;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+}
+
+/* Bookshelf */
+.bookshelf {
+  width: 70%;
+  padding-left: 20px;
+}
+
+.bookshelf__tab {
+  width: 100%;
+  display: flex;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.bookshelf__tab button {
+  width: 50%;
+  padding: 12px 32px;
+  border: none;
+  outline: none;
+  border: 1px;
+}
+
+.bookshelf__tab button.active {
+  color: #fff;
+  background-color: #3eb489;
+}
+
+.books {
+  margin-top: 10px;
+}
+
+.book__card {
+  padding: 10px;
+  border: 1px solid #aaa;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  transition: 0.5s;
+}
+
+.book__card:hover {
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.16);
+}
+
+.book__info {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 5px 0;
+}
+
+.book__info,
+.book__info th,
+.book__info td {
+  border: 1px solid #aaa;
+}
+
+.book__info th,
+.book__info td {
+  padding: 5px;
+}
+
+.book__buttons {
+  width: 100%;
+  display: grid;
+  grid-gap: 5px;
+  grid-template-columns: auto auto auto;
+}
+
+.book__buttons button {
+  padding: 12px 0;
+  background-color: transparent;
+  border: 1px solid #aaa;
+}
+
+@media (max-width: 1023px) {
+  .book_form {
+    width: 40%;
+    padding-bottom: 30px;
+    border-bottom: 2px solid #aaa;
+  }
+
+  .bookshelf {
+    width: 60%;
+  }
+}
+
+@media (max-width: 768px) {
+  main {
+    flex-direction: column;
+  }
+  .book_form {
+    width: 100%;
+  }
+
+  .bookshelf {
+    width: 100%;
+    margin-top: 30px;
+    padding: 0;
+  }
+}
