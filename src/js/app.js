@@ -4,7 +4,7 @@ import { addBook, getBooks, loadBooksFromStorage, renderBooks } from "./services
 const bookForm = document.querySelector('#bookForm');
 
 // tabs
-const finishedTabsBtn = document.querySelector('#finishedTabBtn');
+const finishedTabBtn = document.querySelector('#finishedTabBtn');
 const unfinishedTabBtn = document.querySelector('#unfinishedTabBtn');
 
 // Wrapper
@@ -32,9 +32,21 @@ document.addEventListener(SAVED_EVENT, () => {
 });
 
 document.addEventListener(RENDER_EVENT, () => {
-    const booksToRender = getBooks(finishedTabsBtn.classList.contains('active'));
+    const booksToRender = getBooks(finishedTabBtn.classList.contains('active'));
     renderBooks(booksToRender, booksWrapper);
 });
+
+unfinishedTabBtn.addEventListener('click', () => {
+    finishedTabBtn.classList.remove('active');
+    unfinishedTabBtn.classList.add('active');
+    document.dispatchEvent(new Event(RENDER_EVENT));
+});
+
+finishedTabBtn.addEventListener('click', () => {
+    unfinishedTabBtn.classList.remove('active');
+    finishedTabBtn.classList.add('active');
+    document.dispatchEvent(new Event(RENDER_EVENT));
+})
 
 document.addEventListener('DOMContentLoaded', () => {
     loadBooksFromStorage();

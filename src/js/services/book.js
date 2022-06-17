@@ -49,6 +49,8 @@ const loadBooksFromStorage = () => {
 }
 
 const createBookCard = (book) => {
+    const button = book.isFinished ? `<button id="finishBookBtn" data-id="${book.id}">Finish</button>` : `<button id="unfinishBookBtn" data-id="${book.id}">Unfinish</button>`;
+
     return `
         <div class="book__card">
             <h4 class="book__title">${book.title}</h4>
@@ -63,7 +65,7 @@ const createBookCard = (book) => {
                 </tr>
             </table>
             <div class="book__buttons">
-                <button id="finishBookBtn" data-id="${book.id}">Finish</button>
+                ${ button }
                 <button id="editBookBtn" data-id="${book.id}">Edit</button>
                 <button id="deleteBookBtn" data-id="${book.id}">Delete</button>
             </div>
