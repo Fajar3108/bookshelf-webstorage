@@ -131,6 +131,13 @@ main {
   padding: 12px 0;
   background-color: transparent;
   border: 1px solid #aaa;
+  transition: 0.5s;
+}
+
+.book__buttons button:hover {
+  background-color: #3eb489;
+  border-color: #3eb489;
+  color: #fff;
 }
 
 @media (max-width: 1023px) {
