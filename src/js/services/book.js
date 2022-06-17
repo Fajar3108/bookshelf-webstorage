@@ -66,7 +66,6 @@ const createBookCard = (book) => {
             </table>
             <div class="book__buttons">
                 ${ button }
-                <button id="editBookBtn" data-id="${book.id}">Edit</button>
                 <button id="deleteBookBtn" data-id="${book.id}">Delete</button>
             </div>
         </div>

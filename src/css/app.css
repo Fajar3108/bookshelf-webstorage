@@ -124,7 +124,7 @@ main {
   width: 100%;
   display: grid;
   grid-gap: 5px;
-  grid-template-columns: auto auto auto;
+  grid-template-columns: auto auto;
 }
 
 .book__buttons button {
