@@ -38,6 +38,25 @@ const getBooks = (isFinished) => {
     return books.filter((book) => book.isFinished == isFinished);;
 }
 
+const findBookIndex = (id) => {
+    let index;
+    books.forEach((item, i) => {
+        if (item.id == id) {
+            index = i;
+        }
+    });
+
+    return index;
+}
+
+const updateStatusBook = (id, status) => {
+    const targetIndex = findBookIndex(id);
+    books[targetIndex].isFinished = status;
+
+    saveBook();
+    document.dispatchEvent(new Event(RENDER_EVENT));
+}
+
 const loadBooksFromStorage = () => {
     const serializedData = localStorage.getItem(STORAGE_KEY);
     const data = JSON.parse(serializedData);
@@ -48,35 +67,65 @@ const loadBooksFromStorage = () => {
     document.dispatchEvent(new Event(RENDER_EVENT));
 }
 
-const createBookCard = (book) => {
-    const button = book.isFinished ? `<button id="finishBookBtn" data-id="${book.id}">Finish</button>` : `<button id="unfinishBookBtn" data-id="${book.id}">Unfinish</button>`;
+const createBookCard = ({id, title, author, year, isFinished}) => {
+    const card = document.createElement('div');
+    card.classList.add('book__card');
 
-    return `
-        <div class="book__card">
-            <h4 class="book__title">${book.title}</h4>
-            <table class="book__info">
-                <tr>
-                    <td width="100px">Author</td>
-                    <td>${book.author}</td>
-                </tr>
-                <tr>
-                    <td width="100px">Year</td>
-                    <td>${book.year}</td>
-                </tr>
-            </table>
-            <div class="book__buttons">
-                ${ button }
-                <button id="deleteBookBtn" data-id="${book.id}">Delete</button>
-            </div>
-        </div>
+    const textTitle = document.createElement('h4');
+    textTitle.innerText = title;
+    textTitle.classList.add('book__title');
+
+    card.append(textTitle);
+
+    card.innerHTML += `
+        <table class="book__info">
+            <tr>
+                <td width="100px">Author</td>
+                <td>${author}</td>
+            </tr>
+            <tr>
+                <td width="100px">Year</td>
+                <td>${year}</td>
+            </tr>
+        </table>
     `;
+
+    const buttonsWrapper = document.createElement('div');
+    buttonsWrapper.classList.add('book__buttons');
+
+    const removeButton = document.createElement('button');
+    removeButton.textContent = 'Remove';
+    removeButton.addEventListener('click', () => {
+        removeBook(id);
+    });
+
+    if (!isFinished) {
+        const finishButton = document.createElement('button');
+        finishButton.textContent = 'Finish';
+        finishButton.addEventListener('click', () => {
+            updateStatusBook(id, true);
+        });
+
+        buttonsWrapper.append(finishButton, removeButton);
+    } else {
+        const unFinishButton = document.createElement('button');
+        unFinishButton.textContent = 'Unfinish';
+        unFinishButton.addEventListener('click', () => {
+            updateStatusBook(id, false);
+        });
+        buttonsWrapper.append(unFinishButton, removeButton);
+    }
+
+    card.append(buttonsWrapper);
+
+    return card;
 }
 
 const renderBooks = (books, wrapper) => {
     wrapper.innerHTML = "";
     books.forEach((book) => {
         const bookCard = createBookCard(book); 
-        wrapper.innerHTML += bookCard;
+        wrapper.append(bookCard);
     });
 }
 

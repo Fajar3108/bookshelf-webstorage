@@ -28,7 +28,7 @@ bookForm.addEventListener('submit', (e) => {
 });
 
 document.addEventListener(SAVED_EVENT, () => {
-    alert('Berhasil menambahkan buku');
+    alert('Berhasil memperbaharui data di storage');
 });
 
 document.addEventListener(RENDER_EVENT, () => {
@@ -46,7 +46,7 @@ finishedTabBtn.addEventListener('click', () => {
     unfinishedTabBtn.classList.remove('active');
     finishedTabBtn.classList.add('active');
     document.dispatchEvent(new Event(RENDER_EVENT));
-})
+});
 
 document.addEventListener('DOMContentLoaded', () => {
     loadBooksFromStorage();
