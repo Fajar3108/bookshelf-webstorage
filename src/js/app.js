@@ -1,5 +1,5 @@
 import { RENDER_EVENT, SAVED_EVENT } from "./env.js";
-import { addBook, getBooks, loadBooksFromStorage } from "./services/book.js";
+import { addBook, getBooks, loadBooksFromStorage, renderBooks } from "./services/book.js";
 
 const bookForm = document.querySelector('#bookForm');
 
@@ -33,7 +33,7 @@ document.addEventListener(SAVED_EVENT, () => {
 
 document.addEventListener(RENDER_EVENT, () => {
     const booksToRender = getBooks(finishedTabsBtn.classList.contains('active'));
-    console.log(booksToRender);
+    renderBooks(booksToRender, booksWrapper);
 });
 
 document.addEventListener('DOMContentLoaded', () => {
