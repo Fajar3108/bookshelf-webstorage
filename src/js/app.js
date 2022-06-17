@@ -1,4 +1,5 @@
 import { RENDER_EVENT, SAVED_EVENT } from "./env.js";
+import { generateAlertElement } from "./helpers/helper.js";
 import { addBook, getBooks, loadBooksFromStorage, renderBooks } from "./services/book.js";
 
 const bookForm = document.querySelector('#bookForm');
@@ -28,7 +29,7 @@ bookForm.addEventListener('submit', (e) => {
 });
 
 document.addEventListener(SAVED_EVENT, () => {
-    alert('Berhasil memperbaharui data di storage');
+    generateAlertElement('success', 'Data di storage telah di perbaharui');
 });
 
 document.addEventListener(RENDER_EVENT, () => {

@@ -22,6 +22,24 @@ main {
   flex-wrap: nowrap;
 }
 
+/* Alert Box */
+.alert {
+  width: 100%;
+  padding: 15px;
+  margin-bottom: 10px;
+  border: 2px solid #000;
+  border-radius: 5px;
+  background-color: #aaa;
+  color: #000;
+  font-weight: 600;
+}
+
+.alert__success {
+  background-color: #eafff7 !important;
+  color: #3eb489 !important;
+  border-color: #3eb489;
+}
+
 /* Book Form */
 .book_form {
   width: 30%;
